@@ -1,0 +1,15 @@
+D:\tallerLenguajes_1\tps\rpg-2023-AndreaValdecantos\proyecto\bin\Debug\net7.0\proyecto.exe
+D:\tallerLenguajes_1\tps\rpg-2023-AndreaValdecantos\proyecto\bin\Debug\net7.0\proyecto.deps.json
+D:\tallerLenguajes_1\tps\rpg-2023-AndreaValdecantos\proyecto\bin\Debug\net7.0\proyecto.runtimeconfig.json
+D:\tallerLenguajes_1\tps\rpg-2023-AndreaValdecantos\proyecto\bin\Debug\net7.0\proyecto.dll
+D:\tallerLenguajes_1\tps\rpg-2023-AndreaValdecantos\proyecto\bin\Debug\net7.0\proyecto.pdb
+D:\tallerLenguajes_1\tps\rpg-2023-AndreaValdecantos\proyecto\obj\Debug\net7.0\proyecto.csproj.AssemblyReference.cache
+D:\tallerLenguajes_1\tps\rpg-2023-AndreaValdecantos\proyecto\obj\Debug\net7.0\proyecto.GeneratedMSBuildEditorConfig.editorconfig
+D:\tallerLenguajes_1\tps\rpg-2023-AndreaValdecantos\proyecto\obj\Debug\net7.0\proyecto.AssemblyInfoInputs.cache
+D:\tallerLenguajes_1\tps\rpg-2023-AndreaValdecantos\proyecto\obj\Debug\net7.0\proyecto.AssemblyInfo.cs
+D:\tallerLenguajes_1\tps\rpg-2023-AndreaValdecantos\proyecto\obj\Debug\net7.0\proyecto.csproj.CoreCompileInputs.cache
+D:\tallerLenguajes_1\tps\rpg-2023-AndreaValdecantos\proyecto\obj\Debug\net7.0\proyecto.dll
+D:\tallerLenguajes_1\tps\rpg-2023-AndreaValdecantos\proyecto\obj\Debug\net7.0\refint\proyecto.dll
+D:\tallerLenguajes_1\tps\rpg-2023-AndreaValdecantos\proyecto\obj\Debug\net7.0\proyecto.pdb
+D:\tallerLenguajes_1\tps\rpg-2023-AndreaValdecantos\proyecto\obj\Debug\net7.0\proyecto.genruntimeconfig.cache
+D:\tallerLenguajes_1\tps\rpg-2023-AndreaValdecantos\proyecto\obj\Debug\net7.0\ref\proyecto.dll
