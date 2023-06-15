@@ -12,7 +12,7 @@
             "program": "${workspaceFolder}/proyecto/bin/Debug/net7.0/proyecto.dll",
             "args": [],
             "cwd": "${workspaceFolder}/proyecto",
-            "console": "internalConsole",
+            "console": "integratedTerminal",
             "stopAtEntry": false
         },
         {

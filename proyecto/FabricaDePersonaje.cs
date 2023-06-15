@@ -1,7 +1,7 @@
 namespace EspecificacionesPersonaje{
 
 public class FabricaDePersonaje{
-    public void generarPersonaje(){
+    public Personaje generarPersonaje(){
         Personaje nuevoPersonaje = new Personaje();
         Random numeroRandom = new Random();
         nuevoPersonaje.tipo = "coso";
@@ -14,6 +14,8 @@ public class FabricaDePersonaje{
         nuevoPersonaje.nivel = numeroRandom.Next(1,10);
         nuevoPersonaje.armadura = numeroRandom.Next(1,10);
         nuevoPersonaje.salud = 100;
+        
+        return nuevoPersonaje;
     }
 }
 }
