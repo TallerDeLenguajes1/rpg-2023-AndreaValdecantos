@@ -4,9 +4,9 @@ public class FabricaDePersonaje{
     public Personaje generarPersonaje(){
         Personaje nuevoPersonaje = new Personaje();
         Random numeroRandom = new Random();
-        nuevoPersonaje.tipo = "coso";
-        nuevoPersonaje.apodo = "cosoo";
-        nuevoPersonaje.fechaNacimiento = DateTime.Today;
+        nuevoPersonaje.tipo = nuevoPersonaje.tipos[numeroRandom.Next(0,3)]; //agregar de un array
+        nuevoPersonaje.apodo = nuevoPersonaje.apodos[numeroRandom.Next(0,3)]; //agregar de un array
+        nuevoPersonaje.fechaNacimiento = DateTime.Today; //falta fecha
         nuevoPersonaje.edad = numeroRandom.Next(0,300);
         nuevoPersonaje.velocidad = numeroRandom.Next(1,10);
         nuevoPersonaje.destreza = numeroRandom.Next(1,5);
