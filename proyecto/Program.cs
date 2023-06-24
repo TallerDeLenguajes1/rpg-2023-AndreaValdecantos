@@ -5,6 +5,9 @@ List<Personaje> listaDePersonajes = new List<Personaje>();
 PersonajesJson archivoJsonPersonajes = new PersonajesJson();
 string rutaArchivo = "archivoJsonPersonajes.txt";
 
+Console.BackgroundColor = ConsoleColor.Black;
+Console.ForegroundColor = ConsoleColor.Blue;
+
 if (archivoJsonPersonajes.Existe(rutaArchivo))
 {
     listaDePersonajes = archivoJsonPersonajes.LeerPersonajes(rutaArchivo);
@@ -23,11 +26,16 @@ Console.WriteLine("-----------LISTA DE PARTICIPANTES-----------");
 Console.WriteLine("============================================");
 MostrarPersonajes(listaDePersonajes);
 
+Console.WriteLine("\n\nPresione una tecla para comenzar la competencia...\n");
+Console.ReadKey();
+Console.Clear();
 
+Console.ResetColor();
+Console.BackgroundColor = ConsoleColor.Black;
+Console.ForegroundColor = ConsoleColor.Yellow;
 Console.WriteLine("\n\n=======================================================================");
 Console.WriteLine("-------------¡¡¡¡¡¡¡¡¡¡QUE COMIENCEN LAS BATALLAS!!!!!!!!!-------------");
-Console.WriteLine("=======================================================================\n\n");
-
+Console.WriteLine("=======================================================================\n");
 
 Competencia(listaDePersonajes);
 
@@ -43,10 +51,14 @@ void Competencia(List<Personaje> listaDePersonajes)
     }
     ganadorDeLaCompetencia = listaDePersonajes[0];
 
+    Console.ResetColor();
+    Console.BackgroundColor = ConsoleColor.Black;
+    Console.ForegroundColor = ConsoleColor.Green;
     Console.WriteLine("\n\n===============================================");
     Console.WriteLine("---------¡GANADOR DE LA COMPETENCIA!-----------");
-    Console.WriteLine("===============================================\n\n");
+    Console.WriteLine("===============================================\n");
     ganadorDeLaCompetencia.MostrarPersonaje();
+    Console.ResetColor();
 }
 
 List<Personaje> CombateEntreDos(List<Personaje> listaDePersonajes, int numeroDeCombate)
@@ -61,12 +73,13 @@ List<Personaje> CombateEntreDos(List<Personaje> listaDePersonajes, int numeroDeC
     {
         personajeUno = listaDePersonajes[numeroAleatorio.Next(listaDePersonajes.Count())];
         personajeDos = listaDePersonajes[numeroAleatorio.Next(listaDePersonajes.Count())];
-    } while (personajeUno.apodo != personajeDos.apodo);
+    } while (personajeUno.apodo == personajeDos.apodo);
 
     Console.WriteLine("-----------COMBATE " + numeroDeCombate + "-------------");
-    Console.WriteLine("---------CONTRINCANTES-----------");
+    Console.WriteLine("\n---------CONTRINCANTES-----------");
     Console.WriteLine(personajeUno.apodo + " ···VS··· " + personajeDos.apodo);
-    while (personajeUno.salud > 0 && personajeDos.salud > 0)
+
+    do
     {
         if (turno % 2 != 0) //en los turnos impares ataque el personajeUno y pierde salud el PersonajeDos
         {
@@ -77,9 +90,9 @@ List<Personaje> CombateEntreDos(List<Personaje> listaDePersonajes, int numeroDeC
             personajeUno.salud = personajeUno.salud - CalcularDañoProvocado(personajeDos, personajeUno, numeroAleatorio);
         }
         turno++;
-    }
+    } while (personajeUno.salud > 0 && personajeDos.salud > 0);
 
-    if (personajeUno.salud <= 0 || personajeDos.salud <= 0)
+    if (personajeUno.salud <= 0 || personajeDos.salud <= 0) //si uno de los personajes perdió
     {
         if (personajeUno.salud <= 0)
         {
@@ -95,8 +108,12 @@ List<Personaje> CombateEntreDos(List<Personaje> listaDePersonajes, int numeroDeC
             personajeUno.salud += 10;
             personajeUno.armadura += 5;
         }
-        Console.WriteLine("---------GANADOR DEL COMBATE-----------");
-        ganadorDelCombate.MostrarPersonaje();
+        Console.WriteLine("\n---------GANADOR DEL COMBATE-----------");
+        Console.WriteLine("Apodo: " + ganadorDelCombate.apodo);
+        Console.WriteLine("Salud: " + ganadorDelCombate.salud);
+        Console.WriteLine("\n\nPresione una tecla para continuar con la competencia...\n");
+        Console.ReadKey();
+        Console.Clear();
     }
 
     return listaDePersonajes;
