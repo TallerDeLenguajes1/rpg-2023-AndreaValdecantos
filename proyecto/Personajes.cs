@@ -9,7 +9,7 @@ namespace PersonajesAPI
         public string tipo {get; set;}
         // public string[] apodos = {"apodo1", "apodo2", "apodo3", "apodo4"}; //definir tipos de personajes
         public string apodo {get; set;} //definir apodos
-        public string fechaNacimiento {get; set;}
+        public DateTime fechaNacimiento {get; set;}
         public int edad {get; set;}
         public int velocidad {get; set;}
         public int destreza {get; set;}

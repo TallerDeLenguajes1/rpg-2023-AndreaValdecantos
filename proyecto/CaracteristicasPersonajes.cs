@@ -27,8 +27,8 @@ public class PersonajesJson
                     {
                         string responseBody = objReader.ReadToEnd();
                         Root personajes = JsonSerializer.Deserialize<Root>(responseBody);
-                        List<Doc> listaPersonajes = personajes.docs;
-                        return listaPersonajes;
+                        List<Doc> PersonajesAPI = personajes.docs;
+                        return PersonajesAPI;
                         // Console.WriteLine(listaPersonajes.Count());; // 933 personajes
                         // Random numeroAleatorio = new Random();
                         // for (int i = 0; i < 4; i++)

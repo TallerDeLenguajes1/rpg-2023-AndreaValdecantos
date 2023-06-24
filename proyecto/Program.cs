@@ -1,31 +1,16 @@
 ﻿using PersonajesAPI;
 
 FabricaDePersonaje fabrica = new FabricaDePersonaje();
-//crear función para generar automáticamente personajes y agregarlso al array
-Personaje primerPersonaje = fabrica.generarPersonaje();
-Personaje segundoPersonaje = fabrica.generarPersonaje();
-Personaje[] listaDePersonajes = { primerPersonaje, segundoPersonaje };
+//crear función para generar automáticamente personajes y agregarlso a la
+List<Personaje> listaDePersonajes = new List<Personaje>();
 var numeroPersonaje = 0;
 
 //////intento de función para crear varios personajes
 
-// Personaje[] crearPersonajes()
-// {
-//     Personaje pPersonaje = fabrica.generarPersonaje();
-//     listaDePersonajes.Append(pPersonaje);
-//     return listaDePersonajes;
-// }
-
-// for (int i = 0; i < 3; i++)
-// {
-//     listaDePersonajes = crearPersonajes();
-// }
-
-/////
-
-//serealizar es pasar a un formato que se puede grabar
-//serializar es convertir a texto, hay que serializar la lista de personajes
-//deserealizar lo convierte de nuevo a objeto
+for (int i = 0; i < 5; i++)
+{
+    listaDePersonajes.Add(fabrica.generarPersonaje());
+}
 
 foreach (var personaje in listaDePersonajes)
 {
