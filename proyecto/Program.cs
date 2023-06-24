@@ -1,7 +1,6 @@
 ﻿using RPG;
 
 FabricaDePersonaje fabrica = new FabricaDePersonaje();
-//crear función para generar automáticamente personajes y agregarlso a la
 List<Personaje> listaDePersonajes = new List<Personaje>();
 PersonajesJson archivoJsonPersonajes = new PersonajesJson();
 string rutaArchivo = "archivoJsonPersonajes.txt";
@@ -19,33 +18,28 @@ else
     archivoJsonPersonajes.GuardarPersonajes(listaDePersonajes, rutaArchivo);
 }
 
-Console.WriteLine("___________________________________________");
-Console.WriteLine("___________________________________________");
+Console.WriteLine("============================================");
+Console.WriteLine("-----------LISTA DE PARTICIPANTES-----------");
+Console.WriteLine("============================================");
 MostrarPersonajes(listaDePersonajes);
-Console.WriteLine("\n___________________________________________");
-Console.WriteLine("___________________________________________\n\n");
 
-// El combate se realiza por turnos. Por cada turno un personaje ataca y el otro se defiende.
-// La forma de calcular el daño provocado en cada turno es la siguiente:
-// • Ataque: Destreza * Fuerza * Nivel (del personaje que ataca)
-// • Efectividad: Valor aleatorio entre 1 y 100.
-// • Defensa: Armadura * Velocidad (del personaje que defiende)
-// • Constante de Ajuste: 500
-// Daño provocado = (Ataque * Efectividad) - Defensa) / Constante de Ajuste
-// Una vez que se realice el turno actualizar la salud del personaje que defiende
-// Salud = Salud – Daño provocado
 
-Console.WriteLine("______________¡¡¡¡¡¡¡¡¡¡COMBATE!!!!!!!!!_________________");
+Console.WriteLine("\n\n=======================================================================");
+Console.WriteLine("-------------¡¡¡¡¡¡¡¡¡¡QUE COMIENCEN LAS BATALLAS!!!!!!!!!-------------");
+Console.WriteLine("=======================================================================\n\n");
+
 
 Competencia(listaDePersonajes);
 
 void Competencia(List<Personaje> listaDePersonajes)
 {
     Personaje ganadorDeLaCompetencia;
+    int numeroDeCombate = 1;
 
     while (listaDePersonajes.Count() > 1)
     {
-        CombateEntreDos(listaDePersonajes);
+        CombateEntreDos(listaDePersonajes, numeroDeCombate);
+        numeroDeCombate++;
     }
     ganadorDeLaCompetencia = listaDePersonajes[0];
 
@@ -55,32 +49,38 @@ void Competencia(List<Personaje> listaDePersonajes)
     ganadorDeLaCompetencia.MostrarPersonaje();
 }
 
-List<Personaje> CombateEntreDos(List<Personaje> listaDePersonajes)
+List<Personaje> CombateEntreDos(List<Personaje> listaDePersonajes, int numeroDeCombate)
 {
     Random numeroAleatorio = new Random();
-    Personaje personajeUno = listaDePersonajes[numeroAleatorio.Next(listaDePersonajes.Count())];
-    Personaje personajeDos = listaDePersonajes[numeroAleatorio.Next(listaDePersonajes.Count())];
+    Personaje personajeUno;
+    Personaje personajeDos;
     Personaje ganadorDelCombate;
     int turno = 1;
 
-    Console.WriteLine("---------CONTRINCANTES-----------");
-
-    if (personajeUno.apodo != personajeDos.apodo)
+    do
     {
-        Console.WriteLine(personajeUno.apodo + " ···VS··· " + personajeDos.apodo);
-        while (personajeUno.salud == 0 || personajeDos.salud == 0)
-        {
-            if (turno % 2 != 0) //en los turnos impares ataque el personajeUno y pierde salud el PersonajeDos
-            {
-                personajeDos.salud = personajeDos.salud - CalcularDañoProvocado(personajeUno, personajeDos, numeroAleatorio);
-            }
-            else
-            { //en los turnos pares al revés
-                personajeUno.salud = personajeUno.salud - CalcularDañoProvocado(personajeDos, personajeUno, numeroAleatorio);
-            }
-            turno++;
-        }
+        personajeUno = listaDePersonajes[numeroAleatorio.Next(listaDePersonajes.Count())];
+        personajeDos = listaDePersonajes[numeroAleatorio.Next(listaDePersonajes.Count())];
+    } while (personajeUno.apodo != personajeDos.apodo);
 
+    Console.WriteLine("-----------COMBATE " + numeroDeCombate + "-------------");
+    Console.WriteLine("---------CONTRINCANTES-----------");
+    Console.WriteLine(personajeUno.apodo + " ···VS··· " + personajeDos.apodo);
+    while (personajeUno.salud > 0 && personajeDos.salud > 0)
+    {
+        if (turno % 2 != 0) //en los turnos impares ataque el personajeUno y pierde salud el PersonajeDos
+        {
+            personajeDos.salud = personajeDos.salud - CalcularDañoProvocado(personajeUno, personajeDos, numeroAleatorio);
+        }
+        else
+        { //en los turnos pares al revés
+            personajeUno.salud = personajeUno.salud - CalcularDañoProvocado(personajeDos, personajeUno, numeroAleatorio);
+        }
+        turno++;
+    }
+
+    if (personajeUno.salud <= 0 || personajeDos.salud <= 0)
+    {
         if (personajeUno.salud <= 0)
         {
             ganadorDelCombate = personajeDos;
@@ -95,7 +95,6 @@ List<Personaje> CombateEntreDos(List<Personaje> listaDePersonajes)
             personajeUno.salud += 10;
             personajeUno.armadura += 5;
         }
-
         Console.WriteLine("---------GANADOR DEL COMBATE-----------");
         ganadorDelCombate.MostrarPersonaje();
     }
