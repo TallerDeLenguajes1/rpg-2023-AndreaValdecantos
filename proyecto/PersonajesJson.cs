@@ -2,14 +2,13 @@ using System.Text.Json;
 namespace RPG;
 public class PersonajesJson
 {
-    public void GuardarPersonajes(List<Personaje> listaDePersonajes)
+    public void GuardarPersonajes(List<Personaje> listaDePersonajes, string rutaArchivo)
     {
-        string nombreArchivo = "JsonPersonajes.txt";
         string personajesJsonizados = JsonSerializer.Serialize(listaDePersonajes); //convierte la lista de objetos en un archivo Json
         // Console.WriteLine("Archivo Serializado : " + personajesJsonizados);
 
         //ahora hay que guardarlo en un archivo de texto
-        using (var archivo = new FileStream(nombreArchivo, FileMode.Create))
+        using (var archivo = new FileStream(rutaArchivo, FileMode.Create))
         {
             using (var archivoDePersonajes = new StreamWriter(archivo))
             {

@@ -3,25 +3,28 @@
 FabricaDePersonaje fabrica = new FabricaDePersonaje();
 //crear función para generar automáticamente personajes y agregarlso a la
 List<Personaje> listaDePersonajes = new List<Personaje>();
-List<Personaje> listaDePersonajes2 = new List<Personaje>();
+PersonajesJson archivoJsonPersonajes = new PersonajesJson();
+string rutaArchivo = "archivoJsonPersonajes.txt";
 
-//////intento de función para crear varios personajes
-
-for (int i = 0; i < 5; i++)
+if (archivoJsonPersonajes.Existe(rutaArchivo))
 {
-    listaDePersonajes.Add(fabrica.generarPersonaje(i));
+    listaDePersonajes = archivoJsonPersonajes.LeerPersonajes(rutaArchivo);
+}
+else
+{
+    for (int i = 0; i < 10; i++)
+    {
+        listaDePersonajes.Add(fabrica.generarPersonaje(i));
+    }
+    archivoJsonPersonajes.GuardarPersonajes(listaDePersonajes, rutaArchivo);
 }
 
-// for (int i = 0; i < listaDePersonajes.Count(); i++)
-// {
-//     listaDePersonajes[i].MostrarPersonaje();
-// }
+MostrarPersonajes(listaDePersonajes);
 
-PersonajesJson archivoJsonPersonajes = new PersonajesJson();
-archivoJsonPersonajes.GuardarPersonajes(listaDePersonajes);
-listaDePersonajes2 = archivoJsonPersonajes.LeerPersonajes("JsonPersonajes.txt");
-
-for (int i = 0; i < listaDePersonajes2.Count(); i++)
+void MostrarPersonajes(List<Personaje> listaDePersonajes)
 {
-    listaDePersonajes2[i].MostrarPersonaje();
+    for (int i = 0; i < listaDePersonajes.Count(); i++)
+    {
+        listaDePersonajes[i].MostrarPersonaje();
+    }
 }
